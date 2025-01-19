@@ -18,27 +18,48 @@ const StickySection = () => {
     // const target = targetRef.current;
 
     // Configuración del efecto sticky
-    gsap.set(image, { //set inicial de la imagen al crear la animacion
+    gsap.set(image, {
+      //set inicial de la imagen al crear la animacion
       alpha: 0, // Oculto la imagen
+      //clipPath: "circle(0% at 50% 50%)",
+      width: "10%",
+      borderRadius: "100% 100% 0% 0%",
+      top: "100%",
+      left: "10%",
+      right: "10%",
+      alignItems: "center",
+      visibility: "hidden",
+      opacity: "1",
     });
-    gsap.to(image, { // Modifico A LA imagen
+
+    gsap.to(image, {
+      // Modifico A LA imagen
       scrollTrigger: {
         trigger: container, //el trigger lo queremos en el contenedor de la imagen
-        start: "top center", 
-        end: "center bottom", 
+        start: "top center",
+        end: "center bottom",
         scrub: true, // Sincroniza animación con el scroll
         markers: true, // Activa los marcadores para depuración
       },
       position: "sticky", // cuando triggerea, posiciono la imagen pegada al container
       alpha: 1, //muestro la imagen
-      clipPath: "circle(100%)", //desde un circulo al 100%
+      //clipPath: "circle(100% at 50% 83%)", //desde un circulo al 100%
+      width: "100%",
+      borderRadius: "0% 0% 0% 0%",
+      top: "0%",
+      left: "0%",
+      right: "0%",
+      opacity: "1",
+      visibility: "visible",
     });
   }, []);
 
   return (
     <div>
       <div style={{ height: "100vh", background: "#f5f5f5" }}>
-      <h1 className="font-bold text-4xl text-black text-center">Contenido inicial</h1>
+        <h1 className="font-bold text-4xl text-black text-center">
+          Contenido inicial
+        </h1>
       </div>
 
       <div
@@ -67,7 +88,9 @@ const StickySection = () => {
           background: "#f5f5f5",
         }}
       >
-        <h1 className="font-bold text-4xl text-black text-center">Contenido final</h1>
+        <h1 className="font-bold text-4xl text-black text-center">
+          Contenido final
+        </h1>
       </div>
     </div>
   );
